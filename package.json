@@ -1,0 +1,68 @@
+{
+  "name": "apidaze",
+  "version": "0.0.1",
+  "description": "Node bindings for the APIdaze API",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./lib ./test",
+    "test": "nyc ava",
+    "test:watch": "npm test -- --watch",
+    "generate:docs": "jsdoc -c ./jsdoc.json -R README.md"
+  },
+  "dependencies": {
+    "got": "^10.4.0"
+  },
+  "devDependencies": {
+    "ava": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jsdoc": "^3.6.3",
+    "minami": "^1.2.3",
+    "nyc": "^15.0.0",
+    "prettier": "1.19.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apidaze/sdk-node.git"
+  },
+  "contributors": [
+    {
+      "name": "apidaze-node contributors",
+      "url": "https://github.com/apidaze/apidaze-node/graphs/contributors"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/apidaze/sdk-node/issues"
+  },
+  "keywords": [
+    "cpaas",
+    "telecommunication",
+    "call",
+    "sms",
+    "api"
+  ],
+  "homepage": "https://github.com/apidaze/sdk-node#readme",
+  "ava": {
+    "files": [
+      "test/**/*"
+    ],
+    "verbose": true
+  },
+  "nyc": {
+    "all": true,
+    "check-coverage": true,
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "include": [
+      "lib/**/*"
+    ],
+    "branches": 90,
+    "lines": 90,
+    "functions": 90,
+    "statements": 90
+  }
+}
