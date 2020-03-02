@@ -24,3 +24,14 @@ test('has properties such as apiKey, apiSecret and apiUrl', t => {
   t.is(client.apiSecret, API_SECRET);
   t.truthy(client.apiUrl);
 });
+
+test('has various clients as a property', t => {
+  const client = new Apidaze(API_KEY, API_SECRET);
+
+  const properties = [client.misc];
+
+  properties.forEach(property => {
+    t.is(typeof property, 'object');
+    t.truthy(property);
+  });
+});
