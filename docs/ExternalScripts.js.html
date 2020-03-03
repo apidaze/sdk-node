@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Apidaze.js - Documentation</title>
+    <title>ExternalScripts.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Apidaze.js</h1>
+    <h1 class="page-title">ExternalScripts.js</h1>
     
 
     
@@ -39,75 +39,87 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Http = require('./Http');
-const Misc = require('./Misc');
-const Messages = require('./Messages');
-const ExternalScripts = require('./ExternalScripts');
-
-const API_URL = 'https://api.apidaze.io/';
-
-/**
- * @classdesc Class representing an Apidaze client
- * @class Apidaze
- * @param {string} apiKey - The API key used for the authentication.
- * @param {string} apiSecret - The API secret used for the authentication.
- * @param {string} [apiUrl] - The API URL used for the requests.
+            <pre class="prettyprint source linenums"><code>/**
+ * @classdesc Create a new external scripts client
+ * @constructs ExternalScripts
+ * @memberof Apidaze
+ * @param {Got} http - A got instance to manage HTTP requests
  *
- * @return {Apidaze}
+ * @return {ExternalScripts}
  */
-function Apidaze(apiKey, apiSecret, apiUrl = API_URL) {
-  if (!apiKey || !apiSecret) {
-    throw new Error("'apiKey' and 'apiSecret' must be provided.");
+module.exports = function ExternalScripts(http) {
+  if (!http) {
+    throw new Error("'http' must be provided.");
   }
 
   /**
-   * The API key
-   * @alias Apidaze#apiKey
+   * @alias ExternalScripts#endpoint
    * @type string
+   * @memberof ExternalScripts
    */
-  this.apiKey = apiKey;
-  /**
-   * The API secret
-   * @alias Apidaze#apiSecret
-   * @type string
-   */
-  this.apiSecret = apiSecret;
-  /**
-   * The API url
-   * @alias Apidaze#apiUrl
-   * @type string
-   */
-  this.apiUrl = apiUrl;
+  this.endpoint = 'externalscripts';
 
   /**
-   * The {@link Http} instance for network requests
-   * @alias Apidaze#http
-   * @type Got
+   * Fetch an external script with the given `id`
+   * @async
+   * @alias ExternalScripts#get
+   * @param {string} id - The ID of the external script to be used
+   * @return {Promise&lt;Response>} HTTP response
    */
-  this.http = new Http(apiKey, apiSecret, apiUrl);
+  this.get = async id => {
+    return await http.get(`${this.endpoint}/${id}`);
+  };
+
   /**
-   * A {@link Misc} instance
-   * @alias Apidaze#misc
-   * @type Misc
+   * Fetch the list of external scripts
+   * @async
+   * @alias ExternalScripts#list
+   * @return {Promise&lt;Response>} HTTP response
    */
-  this.misc = new Misc(this.http);
+  this.list = async () => {
+    return await http.get(this.endpoint);
+  };
+
   /**
-   * A {@link Messages} instance
-   * @alias Apidaze#messages
-   * @type Messages
+   * Update an external script of the given `id` with the given `payload`
+   * @async
+   * @alias ExternalScripts#update
+   * @param {string} id - The ID of the external script to be updated
+   * @param {Object} payload
+   * @param {string} payload.url - The new URL for the external script
+   * @param {string} payload.name - The new name for the external script
+   * @return {Promise&lt;Response>} HTTP response
    */
-  this.messages = new Messages(this.http);
+  this.update = async (id, payload) => {
+    return await http.put(`${this.endpoint}/${id}`, { form: payload });
+  };
+
   /**
-   * An {@link ExternalScripts} instance
-   * @alias Apidaze#externalScripts
-   * @type ExternalScripts
+   * Create an external script with the given `payload`
+   * @async
+   * @alias ExternalScripts#create
+   * @param {Object} payload
+   * @param {string} payload.url - The URL for the external script
+   * @param {string} payload.name - The name for the external script
+   * @return {Promise&lt;Response>} HTTP response
    */
-  this.externalScripts = new ExternalScripts(this.http);
+  this.create = async payload => {
+    return await http.post(this.endpoint, { form: payload });
+  };
+
+  /**
+   * Delete an external script with the given `id`
+   * @async
+   * @alias ExternalScripts#delete
+   * @param {string} id - The ID of the external script to be removed
+   * @return {Promise&lt;Response>} HTTP response
+   */
+  this.delete = async id => {
+    return await http.delete(`${this.endpoint}/${id}`);
+  };
 
   return this;
-}
-
-module.exports = Apidaze;
+};
 </code></pre>
         </article>
     </section>

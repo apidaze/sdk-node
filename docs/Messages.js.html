@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Apidaze.js - Documentation</title>
+    <title>Messages.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Apidaze.js</h1>
+    <h1 class="page-title">Messages.js</h1>
     
 
     
@@ -39,75 +39,47 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Http = require('./Http');
-const Misc = require('./Misc');
-const Messages = require('./Messages');
-const ExternalScripts = require('./ExternalScripts');
-
-const API_URL = 'https://api.apidaze.io/';
-
-/**
- * @classdesc Class representing an Apidaze client
- * @class Apidaze
- * @param {string} apiKey - The API key used for the authentication.
- * @param {string} apiSecret - The API secret used for the authentication.
- * @param {string} [apiUrl] - The API URL used for the requests.
+            <pre class="prettyprint source linenums"><code>/**
+ * @classdesc Messages client
+ * @constructs Messages
+ * @memberof Apidaze
+ * @param {Got} http - A got instance to manage HTTP requests
  *
- * @return {Apidaze}
+ * @return {Messages}
  */
-function Apidaze(apiKey, apiSecret, apiUrl = API_URL) {
-  if (!apiKey || !apiSecret) {
-    throw new Error("'apiKey' and 'apiSecret' must be provided.");
+function Messages(http) {
+  if (!http) {
+    throw new Error("'http' must be provided.");
   }
 
   /**
-   * The API key
-   * @alias Apidaze#apiKey
+   * @alias Messages#endpoint
    * @type string
+   * @memberof Messages
    */
-  this.apiKey = apiKey;
-  /**
-   * The API secret
-   * @alias Apidaze#apiSecret
-   * @type string
-   */
-  this.apiSecret = apiSecret;
-  /**
-   * The API url
-   * @alias Apidaze#apiUrl
-   * @type string
-   */
-  this.apiUrl = apiUrl;
+  this.endpoint = 'sms';
 
   /**
-   * The {@link Http} instance for network requests
-   * @alias Apidaze#http
-   * @type Got
+   * Sends an SMS according to the given payload
+   * @async
+   * @param {string} from - The sender
+   * @param {string} to - The receiver
+   * @param {string} body - The message
+   * @return {Promise&lt;Response>}
    */
-  this.http = new Http(apiKey, apiSecret, apiUrl);
-  /**
-   * A {@link Misc} instance
-   * @alias Apidaze#misc
-   * @type Misc
-   */
-  this.misc = new Misc(this.http);
-  /**
-   * A {@link Messages} instance
-   * @alias Apidaze#messages
-   * @type Messages
-   */
-  this.messages = new Messages(this.http);
-  /**
-   * An {@link ExternalScripts} instance
-   * @alias Apidaze#externalScripts
-   * @type ExternalScripts
-   */
-  this.externalScripts = new ExternalScripts(this.http);
+  this.send = async (from, to, body) => {
+    const payload = {
+      from,
+      to,
+      body,
+    };
+    return await http.post(`${this.endpoint}/send`, { form: payload });
+  };
 
   return this;
 }
 
-module.exports = Apidaze;
+module.exports = Messages;
 </code></pre>
         </article>
     </section>
