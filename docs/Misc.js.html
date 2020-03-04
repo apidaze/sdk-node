@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Apidaze.js - Documentation</title>
+    <title>Misc.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Apidaze.js</h1>
+    <h1 class="page-title">Misc.js</h1>
     
 
     
@@ -39,75 +39,33 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Http = require('./Http');
-const Misc = require('./Misc');
-const Messages = require('./Messages');
-const ExternalScripts = require('./ExternalScripts');
-
-const API_URL = 'https://api.apidaze.io/';
-
-/**
- * @classdesc Class representing an Apidaze client
- * @class Apidaze
- * @param {string} apiKey - The API key used for the authentication.
- * @param {string} apiSecret - The API secret used for the authentication.
- * @param {string} [apiUrl] - The API URL used for the requests.
+            <pre class="prettyprint source linenums"><code>/**
+ * @classdesc Create a new miscellaneous client
+ * @constructs Misc
+ * @memberof Apidaze
+ * @param {Got} http - A got instance to manage HTTP requests
  *
- * @return {Apidaze}
+ * @return {Misc}
  */
-function Apidaze(apiKey, apiSecret, apiUrl = API_URL) {
-  if (!apiKey || !apiSecret) {
-    throw new Error("'apiKey' and 'apiSecret' must be provided.");
+function Misc(http) {
+  if (!http) {
+    throw new Error("'http' must be provided.");
   }
 
   /**
-   * The API key
-   * @alias Apidaze#apiKey
-   * @type string
+   * Validate the given API key and API secret
+   * @async
+   * @alias Misc#validate
+   * @return {Promise&lt;Response>}
    */
-  this.apiKey = apiKey;
-  /**
-   * The API secret
-   * @alias Apidaze#apiSecret
-   * @type string
-   */
-  this.apiSecret = apiSecret;
-  /**
-   * The API url
-   * @alias Apidaze#apiUrl
-   * @type string
-   */
-  this.apiUrl = apiUrl;
-
-  /**
-   * The {@link Http} instance for network requests
-   * @alias Apidaze#http
-   * @type Got
-   */
-  this.http = new Http(apiKey, apiSecret, apiUrl);
-  /**
-   * A {@link Misc} instance
-   * @alias Apidaze#misc
-   * @type Misc
-   */
-  this.misc = new Misc(this.http);
-  /**
-   * A {@link Messages} instance
-   * @alias Apidaze#messages
-   * @type Messages
-   */
-  this.messages = new Messages(this.http);
-  /**
-   * An {@link ExternalScripts} instance
-   * @alias Apidaze#externalScripts
-   * @type ExternalScripts
-   */
-  this.externalScripts = new ExternalScripts(this.http);
+  this.validate = async () => {
+    return await http.get('validates');
+  };
 
   return this;
 }
 
-module.exports = Apidaze;
+module.exports = Misc;
 </code></pre>
         </article>
     </section>

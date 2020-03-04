@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Apidaze.js - Documentation</title>
+    <title>Misc - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,88 +29,316 @@
 
 <div id="main">
     
-    <h1 class="page-title">Apidaze.js</h1>
+    <h1 class="page-title">Misc</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>const Http = require('./Http');
-const Misc = require('./Misc');
-const Messages = require('./Messages');
-const ExternalScripts = require('./ExternalScripts');
+        <h2>
+            <span class="ancestors"><a href="Apidaze.html">Apidaze</a></span>
+        
+        Misc
+        </h2>
+        
+            <div class="class-description"><p>Create a new miscellaneous client</p></div>
+        
+    
+</header>
 
-const API_URL = 'https://api.apidaze.io/';
+<article>
+    <div class="container-overview">
+    
+        
+<div class="section-method">
 
-/**
- * @classdesc Class representing an Apidaze client
- * @class Apidaze
- * @param {string} apiKey - The API key used for the authentication.
- * @param {string} apiSecret - The API secret used for the authentication.
- * @param {string} [apiUrl] - The API URL used for the requests.
- *
- * @return {Apidaze}
- */
-function Apidaze(apiKey, apiSecret, apiUrl = API_URL) {
-  if (!apiKey || !apiSecret) {
-    throw new Error("'apiKey' and 'apiSecret' must be provided.");
-  }
+    
+    <h2>Constructor</h2>
+    
 
-  /**
-   * The API key
-   * @alias Apidaze#apiKey
-   * @type string
-   */
-  this.apiKey = apiKey;
-  /**
-   * The API secret
-   * @alias Apidaze#apiSecret
-   * @type string
-   */
-  this.apiSecret = apiSecret;
-  /**
-   * The API url
-   * @alias Apidaze#apiUrl
-   * @type string
-   */
-  this.apiUrl = apiUrl;
+    <h4 class="name" id="Misc"><span class="type-signature"></span>new Misc<span class="signature">(http)</span><span class="type-signature"> &rarr; {<a href="Misc.html">Misc</a>}</span></h4>
 
-  /**
-   * The {@link Http} instance for network requests
-   * @alias Apidaze#http
-   * @type Got
-   */
-  this.http = new Http(apiKey, apiSecret, apiUrl);
-  /**
-   * A {@link Misc} instance
-   * @alias Apidaze#misc
-   * @type Misc
-   */
-  this.misc = new Misc(this.http);
-  /**
-   * A {@link Messages} instance
-   * @alias Apidaze#messages
-   * @type Messages
-   */
-  this.messages = new Messages(this.http);
-  /**
-   * An {@link ExternalScripts} instance
-   * @alias Apidaze#externalScripts
-   * @type ExternalScripts
-   */
-  this.externalScripts = new ExternalScripts(this.http);
+    
 
-  return this;
-}
 
-module.exports = Apidaze;
-</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Misc.js.html">Misc.js</a>, <a href="Misc.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>http</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code><a href="global.html#Got">Got</a></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <p>A got instance to manage HTTP requests</p>
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code><a href="Misc.html">Misc</a></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="validate"><span class="type-signature">(async) </span>validate<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Validate the given API key and API secret</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Misc.js.html">Misc.js</a>, <a href="Misc.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Promise.&lt;<a href="global.html#Response">Response</a>></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
