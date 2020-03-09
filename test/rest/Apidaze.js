@@ -28,7 +28,13 @@ test('has properties such as apiKey, apiSecret and apiUrl', t => {
 test('has various clients as a property', t => {
   const client = new Apidaze(API_KEY, API_SECRET);
 
-  const properties = [client.misc, client.messages, client.externalScripts];
+  const properties = [
+    client.misc,
+    client.calls,
+    client.messages,
+    client.cdrHandlers,
+    client.externalScripts,
+  ];
 
   properties.forEach(property => {
     t.is(typeof property, 'object');
