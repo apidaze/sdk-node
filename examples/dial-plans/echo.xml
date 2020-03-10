@@ -1,0 +1,9 @@
+<document>
+  <work>
+    <ringback/>
+    <wait>2</wait>
+    <answer/>
+    <echo>500</echo>
+    <hangup/>
+  </work>
+</document>
