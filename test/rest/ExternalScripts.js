@@ -16,7 +16,7 @@ test('fails without http client', t => {
 test('has convenient methods to manage external scripts', t => {
   const client = new ExternalScripts(httpMock);
 
-  const methods = [client.list, client.create, client.update, client.delete];
+  const methods = [client.list, client.get, client.update];
 
   methods.forEach(method => {
     t.truthy(method);
@@ -82,37 +82,5 @@ test('.update updates an external script', async t => {
 
   t.deepEqual(externalScript, fixture);
   t.is(statusCode, 202);
-  t.true(scope.isDone());
-});
-
-test('.delete deletes an external script', async t => {
-  const id = 2;
-  const scope = nock(/apidaze/)
-    .delete(new RegExp(`externalscripts/${id}`))
-    .reply(204, '');
-
-  const client = new ExternalScripts(httpMock);
-  const { body, statusCode } = await client.delete(id);
-
-  t.is(body, '');
-  t.is(statusCode, 204);
-  t.true(scope.isDone());
-});
-
-test('.create creates an external script', async t => {
-  const fixture = {
-    name: 'Example',
-    url: 'https://example.com/script',
-  };
-
-  const scope = nock(/apidaze/)
-    .post(/externalscripts/)
-    .reply(201, fixture);
-
-  const client = new ExternalScripts(httpMock);
-  const { body: externalScript, statusCode } = await client.create(fixture);
-
-  t.deepEqual(externalScript, fixture);
-  t.is(statusCode, 201);
   t.true(scope.isDone());
 });

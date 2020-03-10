@@ -18,15 +18,4 @@ const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
     name: 'A sample external script'
   });
   console.log(updatedExternalScript);
-
-  // delete an external script
-  const deletedExternalScript = await ApidazeClient.externalScripts.delete(firstExternalScript.id);
-  console.log(deletedExternalScript);
-
-  // create an external script
-  const createdExternalScript = await ApidazeClient.externalScripts.create({
-    url: firstExternalScript.url,
-    name: firstExternalScript.name
-  })
-  console.log(createdExternalScript);
 })();
