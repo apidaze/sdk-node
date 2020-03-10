@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Messages.js - Documentation</title>
+    <title>CdrHandlers.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Messages.js</h1>
+    <h1 class="page-title">CdrHandlers.js</h1>
     
 
     
@@ -40,46 +40,39 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @classdesc Messages client
- * @constructs Messages
+ * @classdesc Create a new call detail record handlers client
+ * @constructs CdrHandlers
  * @memberof Apidaze
  * @param {Got} http - A got instance to manage HTTP requests
  *
- * @return {Messages}
+ * @return {CdrHandlers}
  */
-function Messages(http) {
+function CdrHandlers(http) {
   if (!http) {
     throw new Error("'http' must be provided.");
   }
 
   /**
-   * @alias Messages#endpoint
+   * @alias CdrHandlers#endpoint
    * @type string
-   * @memberof Messages
+   * @memberof CdrHandlers
    */
-  this.endpoint = 'sms';
+  this.endpoint = 'cdrhttphandlers';
 
   /**
-   * Sends an SMS according to the given payload
+   * Fetch the list of CDR handlers
    * @async
-   * @param {string} from - The sender
-   * @param {string} to - The receiver
-   * @param {string} body - The message
+   * @alias CdrHandlers#list
    * @return {Promise&lt;Response>}
    */
-  this.send = async (from, to, body) => {
-    const payload = {
-      from,
-      to,
-      body,
-    };
-    return await http.post(`${this.endpoint}/send`, { form: payload });
+  this.list = async () => {
+    return await http.get(this.endpoint);
   };
 
   return this;
 }
 
-module.exports = Messages;
+module.exports = CdrHandlers;
 </code></pre>
         </article>
     </section>
