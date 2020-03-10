@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Messages.js - Documentation</title>
+    <title>Calls.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Messages.js</h1>
+    <h1 class="page-title">Calls.js</h1>
     
 
     
@@ -40,46 +40,76 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @classdesc Messages client
- * @constructs Messages
+ * @classdesc Create a new calls client
+ * @constructs Calls
  * @memberof Apidaze
  * @param {Got} http - A got instance to manage HTTP requests
  *
- * @return {Messages}
+ * @return {Calls}
  */
-function Messages(http) {
+function Calls(http) {
   if (!http) {
     throw new Error("'http' must be provided.");
   }
 
   /**
-   * @alias Messages#endpoint
+   * @alias Calls#endpoint
    * @type string
-   * @memberof Messages
+   * @memberof Calls
    */
-  this.endpoint = 'sms';
+  this.endpoint = 'calls';
 
   /**
-   * Sends an SMS according to the given payload
+   * Place a call
    * @async
-   * @param {string} from - The sender
-   * @param {string} to - The receiver
-   * @param {string} body - The message
+   * @alias Calls#validate
+   * @param {Object} payload
+   * @param {string} payload.callerId - The phone number to present as the callerid (country code included, no + sign)
+   * @param {string} payload.origin - The phone number or SIP account to ring first
+   * @param {string} payload.destination - The destination passed as a parameter to your External Script URL
+   * @param {string} payload.type - The type of the terminal to ring first. Options: "number" or "sipaccount"
    * @return {Promise&lt;Response>}
    */
-  this.send = async (from, to, body) => {
-    const payload = {
-      from,
-      to,
-      body,
-    };
-    return await http.post(`${this.endpoint}/send`, { form: payload });
+  this.make = async ({ callerId: callerid, ...rest }) => {
+    return await http.post(this.endpoint, { form: { callerid, ...rest } });
+  };
+
+  /**
+   * Fetch the list of active calls
+   * @async
+   * @alias Calls#list
+   * @return {Promise&lt;Response>}
+   */
+  this.list = async () => {
+    return await http.get(this.endpoint);
+  };
+
+  /**
+   * Fetch an active call with the given `uuid`
+   * @async
+   * @alias Calls#get
+   * @param {string} uuid - The UUID to be used to fetch the associated active call
+   * @return {Promise&lt;Response>}
+   */
+  this.get = async uuid => {
+    return await http.get(`${this.endpoint}/${uuid}`);
+  };
+
+  /**
+   * Terminate an active call with the given `uuid`
+   * @async
+   * @alias Calls#delete
+   * @param {string} uuid - The UUID to be used to delete the associated active call
+   * @return {Promise&lt;Response>}
+   */
+  this.delete = async uuid => {
+    return await http.delete(`${this.endpoint}/${uuid}`);
   };
 
   return this;
 }
 
-module.exports = Messages;
+module.exports = Calls;
 </code></pre>
         </article>
     </section>
