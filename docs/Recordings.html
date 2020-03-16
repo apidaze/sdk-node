@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Calls - Documentation</title>
+    <title>Recordings - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Calls</h1>
+    <h1 class="page-title">Recordings</h1>
     
 
     
@@ -44,10 +44,10 @@
         <h2>
             <span class="ancestors"><a href="Apidaze.html">Apidaze</a></span>
         
-        Calls
+        Recordings
         </h2>
         
-            <div class="class-description"><p>Create a new calls client</p></div>
+            <div class="class-description"><p>Create a new recordings client</p></div>
         
     
 </header>
@@ -62,7 +62,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Calls"><span class="type-signature"></span>new Calls<span class="signature">(http)</span><span class="type-signature"> &rarr; {<a href="Calls.html">Calls</a>}</span></h4>
+    <h4 class="name" id="Recordings"><span class="type-signature"></span>new Recordings<span class="signature">(http)</span><span class="type-signature"> &rarr; {<a href="Recordings.html">Recordings</a>}</span></h4>
 
     
 
@@ -101,7 +101,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line9">line 9</a>
+        <a href="Recordings.js.html">Recordings.js</a>, <a href="Recordings.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -195,7 +195,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><code><a href="Calls.html">Calls</a></code></span>
+<span class="param-type"><code><a href="Recordings.html">Recordings</a></code></span>
 
 
     </dd>
@@ -227,7 +227,7 @@
         
             
 <div class="section-members">
-<h4 class="name" id="endpoint"><span class="type-signature"></span>endpoint<span class="type-signature"> :string</span></h4>
+<h4 class="name" id="endpoint"><span class="type-signature">(async) </span>endpoint<span class="type-signature"> :string</span></h4>
 
 
 
@@ -265,7 +265,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line19">line 19</a>
+        <a href="Recordings.js.html">Recordings.js</a>, <a href="Recordings.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -306,14 +306,14 @@
 
     
 
-    <h4 class="name" id="delete"><span class="type-signature">(async) </span>delete<span class="signature">(uuid)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
+    <h4 class="name" id="delete"><span class="type-signature">(async) </span>delete<span class="signature">(fileName)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Terminate an active call with the given <code>uuid</code></p>
+    <p>Delete a recording with the given <code>id</code></p>
 </div>
 
 
@@ -349,7 +349,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line64">line 64</a>
+        <a href="Recordings.js.html">Recordings.js</a>, <a href="Recordings.js.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -393,7 +393,7 @@
 
         <tr>
             
-                <td class="name"><code>uuid</code></td>
+                <td class="name"><code>fileName</code></td>
             
 
             <td class="type">
@@ -410,7 +410,7 @@
             
 
             <td class="description last">
-                <p>The UUID to be used to delete the associated active call</p>
+                <p>The file name of the recording to be deleted</p>
                 
             </td>
         </tr>
@@ -462,14 +462,14 @@
 
     
 
-    <h4 class="name" id="get"><span class="type-signature">(async) </span>get<span class="signature">(uuid)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
+    <h4 class="name" id="get"><span class="type-signature">(async) </span>get<span class="signature">(fileName)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Fetch an active call with the given <code>uuid</code></p>
+    <p>Fetch a recording with the given <code>id</code></p>
 </div>
 
 
@@ -505,7 +505,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line53">line 53</a>
+        <a href="Recordings.js.html">Recordings.js</a>, <a href="Recordings.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -549,7 +549,7 @@
 
         <tr>
             
-                <td class="name"><code>uuid</code></td>
+                <td class="name"><code>fileName</code></td>
             
 
             <td class="type">
@@ -566,7 +566,7 @@
             
 
             <td class="description last">
-                <p>The UUID to be used to fetch the associated active call</p>
+                <p>The file name of the recording to be fetched</p>
                 
             </td>
         </tr>
@@ -625,7 +625,7 @@
 
 
 <div class="description">
-    <p>Fetch the list of active calls</p>
+    <p>Fetch the list of recordingsss</p>
 </div>
 
 
@@ -661,7 +661,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line42">line 42</a>
+        <a href="Recordings.js.html">Recordings.js</a>, <a href="Recordings.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -678,291 +678,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Promise.&lt;<a href="global.html#Response">Response</a>></code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="validate"><span class="type-signature">(async) </span>validate<span class="signature">(payload)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Place a call</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line32">line 32</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>payload</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                
-                
-                    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>callerId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>The phone number to present as the callerid (country code included, no + sign)</p>
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>origin</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>The phone number or SIP account to ring first</p>
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>destination</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>The destination passed as a parameter to your External Script URL</p>
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>The type of the terminal to ring first. Options: &quot;number&quot; or &quot;sipaccount&quot;</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 

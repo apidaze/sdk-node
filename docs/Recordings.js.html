@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Apidaze.js - Documentation</title>
+    <title>Recordings.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Apidaze.js</h1>
+    <h1 class="page-title">Recordings.js</h1>
     
 
     
@@ -39,96 +39,65 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Http = require('./Http');
-const Misc = require('./Misc');
-const Calls = require('./Calls');
-const Messages = require('./Messages');
-const Recordings = require('./Recordings');
-const CdrHandlers = require('./CdrHandlers');
-const ExternalScripts = require('./ExternalScripts');
-
-const API_URL = 'https://api.apidaze.io/';
-
-/**
- * @classdesc Class representing an Apidaze client
- * @class Apidaze
- * @param {string} apiKey - The API key used for the authentication.
- * @param {string} apiSecret - The API secret used for the authentication.
- * @param {string} [apiUrl] - The API URL used for the requests.
+            <pre class="prettyprint source linenums"><code>/**
+ * @classdesc Create a new recordings client
+ * @constructs Recordings
+ * @memberof Apidaze
+ * @param {Got} http - A got instance to manage HTTP requests
  *
- * @return {Apidaze}
+ * @return {Recordings}
  */
-function Apidaze(apiKey, apiSecret, apiUrl = API_URL) {
-  if (!apiKey || !apiSecret) {
-    throw new Error("'apiKey' and 'apiSecret' must be provided.");
+function Recordings(http) {
+  if (!http) {
+    throw new Error("'http' must be provided.");
   }
 
   /**
-   * The API key
-   * @alias Apidaze#apiKey
+   * @async
+   * @alias Recordings#endpoint
    * @type string
+   * @memberof Recordings
    */
-  this.apiKey = apiKey;
-  /**
-   * The API secret
-   * @alias Apidaze#apiSecret
-   * @type string
-   */
-  this.apiSecret = apiSecret;
-  /**
-   * The API url
-   * @alias Apidaze#apiUrl
-   * @type string
-   */
-  this.apiUrl = apiUrl;
+  this.endpoint = 'recordings';
 
   /**
-   * The {@link Http} instance for network requests
-   * @alias Apidaze#http
-   * @type Got
+   * Fetch the list of recordingsss
+   * @async
+   * @alias Recordings#list
+   * @return {Promise&lt;Response>}
    */
-  this.http = new Http(apiKey, apiSecret, apiUrl);
+  this.list = async () => {
+    return await http.get(this.endpoint);
+  };
+
   /**
-   * A {@link Misc} instance
-   * @alias Apidaze#misc
-   * @type Misc
+   * Fetch a recording with the given `id`
+   * @async
+   * @alias Recordings#get
+   * @param {string} fileName - The file name of the recording to be fetched
+   * @return {Promise&lt;Response>}
    */
-  this.misc = new Misc(this.http);
+  this.get = async fileName => {
+    return await http.get(`${this.endpoint}/${fileName}`, {
+      responseType: 'buffer',
+    });
+  };
+
   /**
-   * A {@link Messages} instance
-   * @alias Apidaze#messages
-   * @type Messages
+   * Delete a recording with the given `id`
+   * @async
+   * @alias Recordings#delete
+   * @param {string} fileName - The file name of the recording to be deleted
+   * @return {Promise&lt;Response>}
    */
-  this.messages = new Messages(this.http);
-  /**
-   * An {@link ExternalScripts} instance
-   * @alias Apidaze#externalScripts
-   * @type ExternalScripts
-   */
-  this.externalScripts = new ExternalScripts(this.http);
-  /**
-   * A {@link Calls} instance
-   * @alias Apidaze#calls
-   * @type Calls
-   */
-  this.calls = new Calls(this.http);
-  /**
-   * A {@link CdrHandlers} instance
-   * @alias Apidaze#cdrHandlers
-   * @type CdrHandlers
-   */
-  this.cdrHandlers = new CdrHandlers(this.http);
-  /**
-   * A {@link Recording} instance
-   * @alias Apidaze#recordings
-   * @type Recordings
-   */
-  this.recordings = new Recordings(this.http);
+  this.delete = async fileName => {
+    return await http.delete(`${this.endpoint}/${fileName}`);
+  };
 
   return this;
 }
 
-module.exports = Apidaze;
+module.exports = Recordings;
 </code></pre>
         </article>
     </section>
