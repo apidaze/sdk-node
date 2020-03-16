@@ -32,6 +32,7 @@ test('has various clients as a property', t => {
     client.misc,
     client.calls,
     client.messages,
+    client.recordings,
     client.cdrHandlers,
     client.externalScripts,
   ];
