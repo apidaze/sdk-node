@@ -71,7 +71,7 @@ function Calls(http) {
    * @return {Promise&lt;Response>}
    */
   this.make = async ({ callerId: callerid, ...rest }) => {
-    return await http.post(this.endpoint, { form: { callerid, ...rest } });
+    return http.post(this.endpoint, { form: { callerid, ...rest } });
   };
 
   /**
@@ -81,7 +81,7 @@ function Calls(http) {
    * @return {Promise&lt;Response>}
    */
   this.list = async () => {
-    return await http.get(this.endpoint);
+    return http.get(this.endpoint);
   };
 
   /**
@@ -92,7 +92,7 @@ function Calls(http) {
    * @return {Promise&lt;Response>}
    */
   this.get = async uuid => {
-    return await http.get(`${this.endpoint}/${uuid}`);
+    return http.get(`${this.endpoint}/${uuid}`);
   };
 
   /**
@@ -103,7 +103,7 @@ function Calls(http) {
    * @return {Promise&lt;Response>}
    */
   this.delete = async uuid => {
-    return await http.delete(`${this.endpoint}/${uuid}`);
+    return http.delete(`${this.endpoint}/${uuid}`);
   };
 
   return this;

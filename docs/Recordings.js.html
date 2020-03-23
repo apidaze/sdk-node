@@ -67,7 +67,7 @@ function Recordings(http) {
    * @return {Promise&lt;Response>}
    */
   this.list = async () => {
-    return await http.get(this.endpoint);
+    return http.get(this.endpoint);
   };
 
   /**
@@ -78,7 +78,7 @@ function Recordings(http) {
    * @return {Promise&lt;Response>}
    */
   this.get = async fileName => {
-    return await http.get(`${this.endpoint}/${fileName}`, {
+    return http.get(`${this.endpoint}/${fileName}`, {
       responseType: 'buffer',
     });
   };
@@ -91,7 +91,7 @@ function Recordings(http) {
    * @return {Promise&lt;Response>}
    */
   this.delete = async fileName => {
-    return await http.delete(`${this.endpoint}/${fileName}`);
+    return http.delete(`${this.endpoint}/${fileName}`);
   };
 
   return this;

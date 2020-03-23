@@ -67,7 +67,7 @@ module.exports = function ExternalScripts(http) {
    * @return {Promise&lt;Response>} HTTP response
    */
   this.get = async id => {
-    return await http.get(`${this.endpoint}/${id}`);
+    return http.get(`${this.endpoint}/${id}`);
   };
 
   /**
@@ -77,7 +77,7 @@ module.exports = function ExternalScripts(http) {
    * @return {Promise&lt;Response>} HTTP response
    */
   this.list = async () => {
-    return await http.get(this.endpoint);
+    return http.get(this.endpoint);
   };
 
   /**
@@ -91,7 +91,7 @@ module.exports = function ExternalScripts(http) {
    * @return {Promise&lt;Response>} HTTP response
    */
   this.update = async (id, payload) => {
-    return await http.put(`${this.endpoint}/${id}`, { form: payload });
+    return http.put(`${this.endpoint}/${id}`, { form: payload });
   };
 
   return this;
