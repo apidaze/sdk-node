@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Calls - Documentation</title>
+    <title>Applications - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Calls</h1>
+    <h1 class="page-title">Applications</h1>
     
 
     
@@ -44,10 +44,10 @@
         <h2>
             <span class="ancestors"><a href="Apidaze.html">Apidaze</a></span>
         
-        Calls
+        Applications
         </h2>
         
-            <div class="class-description"><p>Create a new calls client</p></div>
+            <div class="class-description"><p>Create a new applications client</p></div>
         
     
 </header>
@@ -62,7 +62,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Calls"><span class="type-signature"></span>new Calls<span class="signature">(http)</span><span class="type-signature"> &rarr; {<a href="Calls.html">Calls</a>}</span></h4>
+    <h4 class="name" id="Applications"><span class="type-signature"></span>new Applications<span class="signature">(http)</span><span class="type-signature"> &rarr; {<a href="Applications.html">Applications</a>}</span></h4>
 
     
 
@@ -101,7 +101,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line9">line 9</a>
+        <a href="Applications.js.html">Applications.js</a>, <a href="Applications.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -195,7 +195,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><code><a href="Calls.html">Calls</a></code></span>
+<span class="param-type"><code><a href="Applications.html">Applications</a></code></span>
 
 
     </dd>
@@ -265,7 +265,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line19">line 19</a>
+        <a href="Applications.js.html">Applications.js</a>, <a href="Applications.js.html#line19">line 19</a>
     </li></ul></dd>
     
 
@@ -306,14 +306,14 @@
 
     
 
-    <h4 class="name" id="delete"><span class="type-signature">(async) </span>delete<span class="signature">(uuid)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
+    <h4 class="name" id="getByApiKey"><span class="type-signature">(async) </span>getByApiKey<span class="signature">(apiKey)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Terminate an active call with the given <code>uuid</code></p>
+    <p>Fetch the list of sub-applications by the given API key</p>
 </div>
 
 
@@ -349,7 +349,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line64">line 64</a>
+        <a href="Applications.js.html">Applications.js</a>, <a href="Applications.js.html#line55">line 55</a>
     </li></ul></dd>
     
 
@@ -393,7 +393,7 @@
 
         <tr>
             
-                <td class="name"><code>uuid</code></td>
+                <td class="name"><code>apiKey</code></td>
             
 
             <td class="type">
@@ -410,7 +410,7 @@
             
 
             <td class="description last">
-                <p>The UUID to be used to delete the associated active call</p>
+                <p>The API key of applications to be fetched</p>
                 
             </td>
         </tr>
@@ -462,14 +462,14 @@
 
     
 
-    <h4 class="name" id="get"><span class="type-signature">(async) </span>get<span class="signature">(uuid)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
+    <h4 class="name" id="getById"><span class="type-signature">(async) </span>getById<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Fetch an active call with the given <code>uuid</code></p>
+    <p>Fetch the list of sub-applications by the given application ID</p>
 </div>
 
 
@@ -505,7 +505,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line53">line 53</a>
+        <a href="Applications.js.html">Applications.js</a>, <a href="Applications.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -549,7 +549,163 @@
 
         <tr>
             
-                <td class="name"><code>uuid</code></td>
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>number</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <p>The ID of applications to be fetched</p>
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Promise.&lt;<a href="global.html#Response">Response</a>></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getByName"><span class="type-signature">(async) </span>getByName<span class="signature">(name)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Fetch the list of sub-applications by the given application name</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Applications.js.html">Applications.js</a>, <a href="Applications.js.html#line66">line 66</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -566,7 +722,7 @@
             
 
             <td class="description last">
-                <p>The UUID to be used to fetch the associated active call</p>
+                <p>The name of applications to be fetched</p>
                 
             </td>
         </tr>
@@ -625,7 +781,7 @@
 
 
 <div class="description">
-    <p>Fetch the list of active calls</p>
+    <p>Fetch the list of sub-applications</p>
 </div>
 
 
@@ -661,7 +817,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line42">line 42</a>
+        <a href="Applications.js.html">Applications.js</a>, <a href="Applications.js.html#line27">line 27</a>
     </li></ul></dd>
     
 
@@ -722,14 +878,14 @@
 
     
 
-    <h4 class="name" id="validate"><span class="type-signature">(async) </span>validate<span class="signature">(payload)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
+    <h4 class="name" id="~getBy"><span class="type-signature">(async, inner) </span>getBy<span class="signature">(key, value)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Place a call</p>
+    <p>Fetch the list of sub-applications by the given <code>key</code> and <code>value</code></p>
 </div>
 
 
@@ -765,7 +921,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Calls.js.html">Calls.js</a>, <a href="Calls.js.html#line32">line 32</a>
+        <a href="Applications.js.html">Applications.js</a>, <a href="Applications.js.html#line40">line 40</a>
     </li></ul></dd>
     
 
@@ -809,50 +965,7 @@
 
         <tr>
             
-                <td class="name"><code>payload</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>Object</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                
-                
-                    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>callerId</code></td>
+                <td class="name"><code>key</code></td>
             
 
             <td class="type">
@@ -869,7 +982,7 @@
             
 
             <td class="description last">
-                <p>The phone number to present as the callerid (country code included, no + sign)</p>
+                <p>The condition <code>key</code></p>
                 
             </td>
         </tr>
@@ -878,7 +991,7 @@
 
         <tr>
             
-                <td class="name"><code>origin</code></td>
+                <td class="name"><code>value</code></td>
             
 
             <td class="type">
@@ -895,67 +1008,7 @@
             
 
             <td class="description last">
-                <p>The phone number or SIP account to ring first</p>
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>destination</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>The destination passed as a parameter to your External Script URL</p>
-                
-            </td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>type</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>The type of the terminal to ring first. Options: &quot;number&quot; or &quot;sipaccount&quot;</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
+                <p>The condition <code>value</code></p>
                 
             </td>
         </tr>
