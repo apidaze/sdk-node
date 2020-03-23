@@ -59,7 +59,7 @@ function Misc(http) {
    * @return {Promise&lt;Response>}
    */
   this.validate = async () => {
-    return await http.get('validates');
+    return http.get('validates');
   };
 
   return this;
