@@ -30,7 +30,7 @@ const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
   } = appById;
 
   // instantiate a new Apidaze client with the sub-app's credentials
-  const AnotherApidazeClient = new Apidaze(apiKey, apiSecret, API_URL);
+  const AnotherApidazeClient = new Apidaze(apiKey, apiSecret);
 
   // try out the new Apidaze client
   const externalScripts = await AnotherApidazeClient.externalScripts.list();
