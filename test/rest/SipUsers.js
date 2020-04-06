@@ -103,7 +103,8 @@ test('.create creates a SIP user', async t => {
     username: sipUser1.sip.username,
   };
   const scope = nock(/apidaze/)
-    .post(/sipusers/)
+    .post(/sipusers$/)
+    .query(true)
     .reply(201, sipUser1);
 
   const client = new SipUsers(httpMock);
@@ -121,7 +122,7 @@ test('.delete deletes a SIP user', async t => {
     .reply(204, '');
 
   const client = new SipUsers(httpMock);
-  const { body, statusCode } = await client.delete(1);
+  const { body, statusCode } = await client.delete(id);
 
   t.deepEqual(body, '');
   t.is(statusCode, 204);
@@ -135,9 +136,41 @@ test('.get fetches a SIP user', async t => {
     .reply(200, sipUser1);
 
   const client = new SipUsers(httpMock);
-  const { body: user, statusCode } = await client.get(1);
+  const { body: user, statusCode } = await client.get(id);
 
   t.deepEqual(user, sipUser1);
   t.is(statusCode, 200);
+  t.true(scope.isDone());
+});
+
+test(`.getStatus fetches a SIP user's status`, async t => {
+  const id = 1;
+  const fixture = {
+    uri: 'sip:sip_account@vm.1cdef287.apidaze.voip',
+    status: 'Not registered',
+  };
+  const scope = nock(/apidaze/)
+    .get(new RegExp(`sipusers/${id}/status`))
+    .reply(200, fixture);
+
+  const client = new SipUsers(httpMock);
+  const { body, statusCode } = await client.getStatus(id);
+
+  t.deepEqual(body, fixture);
+  t.is(statusCode, 200);
+  t.true(scope.isDone());
+});
+
+test(`.resetPassword resets a SIP user's password`, async t => {
+  const id = sipUser1.id;
+  const scope = nock(/apidaze/)
+    .post(new RegExp(`sipusers/${id}/password`))
+    .reply(202, sipUser1);
+
+  const client = new SipUsers(httpMock);
+  const { body: user, statusCode } = await client.resetPassword(id);
+
+  t.deepEqual(user, sipUser1);
+  t.is(statusCode, 202);
   t.true(scope.isDone());
 });
