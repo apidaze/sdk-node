@@ -28,6 +28,14 @@ const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
   const { body: updatedUser } = await ApidazeClient.sipUsers.update(createdUser.id, { name: 'New SIP Account' })
   console.log('the updated user', updatedUser);
 
+  // get a user status
+  const { body: userStatus, statusCode } = await ApidazeClient.sipUsers.getStatus(user.id);
+  console.log('the user status', userStatus, statusCode);
+
+  // reset a user's password
+  const { body: password, statusCode: ss } = await ApidazeClient.sipUsers.resetPassword(user.id);
+  console.log('the new password', password, ss);
+
   // delete a user
   const deletedUserResponse = await ApidazeClient.sipUsers.delete(createdUser.id);
   console.log('the deleted user', deletedUserResponse);
