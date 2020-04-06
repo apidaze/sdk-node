@@ -18,7 +18,7 @@ test('fails without http client', t => {
   });
 });
 
-test('has Recordingsellaneous methods to support in general', t => {
+test('has convenient methods to manage recordings', t => {
   const client = new Recordings(httpMock);
 
   const methods = [client.list, client.get, client.delete];
