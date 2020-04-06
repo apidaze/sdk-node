@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Misc.js - Documentation</title>
+    <title>SipUsers.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Misc.js</h1>
+    <h1 class="page-title">SipUsers.js</h1>
     
 
     
@@ -40,32 +40,107 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @classdesc Create a new miscellaneous client
- * @constructs Misc
+ * @classdesc Create a new SIP users client
+ * @constructs SipUsers
  * @memberof Apidaze
  * @param {Got} http - A got instance to manage HTTP requests
  *
- * @return {Misc}
+ * @return {SipUsers}
  */
-function Misc(http) {
+function SipUsers(http) {
   if (!http) {
     throw new Error("'http' must be provided.");
   }
 
   /**
-   * Validates the given API key and API secret
    * @async
-   * @alias Misc#validate
+   * @alias SipUsers#endpoint
+   * @type string
+   * @memberof SipUsers
+   */
+  this.endpoint = 'sipusers';
+
+  /**
+   * Gets SIP users
+   * @async
+   * @alias SipUsers#list
    * @return {Promise&lt;Response>}
    */
-  this.validate = async () => {
-    return http.get('validates');
+  this.list = async () => {
+    return await http.get(this.endpoint);
+  };
+
+  /**
+   * Creates a SIP user
+   * @async
+   * @alias SipUsers#create
+   * @param {Object} payload - The SIP account's data
+   * @return {Promise&lt;Response>}
+   */
+  this.create = async payload => {
+    return await http.post(this.endpoint, { form: payload });
+  };
+
+  /**
+   * Deletes a SIP user
+   * @async
+   * @alias SipUsers#delete
+   * @param {number} id - The SIP account's id
+   * @return {Promise&lt;Response>}
+   */
+  this.delete = async id => {
+    return await http.delete(`${this.endpoint}/${id}`);
+  };
+
+  /**
+   * Gets a SIP user
+   * @async
+   * @alias SipUsers#get
+   * @param {number} id - The SIP account's id
+   * @return {Promise&lt;Response>}
+   */
+  this.get = async id => {
+    return await http.get(`${this.endpoint}/${id}`);
+  };
+
+  /**
+   * Updates a SIP user
+   * @async
+   * @alias SipUsers#update
+   * @param {number} id - The SIP account's id
+   * @param {Object} payload - The SIP account's data to update
+   * @return {Promise&lt;Response>}
+   */
+  this.update = async (id, payload) => {
+    return await http.put(`${this.endpoint}/${id}`, { form: payload });
+  };
+
+  /**
+   * Get the status of a SIP user
+   * @async
+   * @alias SipUsers#getStatus
+   * @param {number} id - The SIP account's id
+   * @return {Promise&lt;Response>}
+   */
+  this.getStatus = async id => {
+    return await http.get(`${this.endpoint}/${id}/status`);
+  };
+
+  /**
+   * Reset the password for a SIP user
+   * @async
+   * @alias SipUsers#resetPassword
+   * @param {number} id - The SIP account's id
+   * @return {Promise&lt;Response>}
+   */
+  this.resetPassword = async id => {
+    return await http.post(`${this.endpoint}/${id}/password`);
   };
 
   return this;
 }
 
-module.exports = Misc;
+module.exports = SipUsers;
 </code></pre>
         </article>
     </section>
