@@ -4,18 +4,25 @@ const { Apidaze } = require('../');
 
 const API_KEY = process.env.API_KEY;
 const API_SECRET = process.env.API_SECRET;
+const API_URL = 'https://cpaas-api.dev.voipinnovations.com';
 
-const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
+const ApidazeClient = new Apidaze(API_KEY, API_SECRET, API_URL);
 
 (async () => {
+  // upload a media file
+  const filePath = path.resolve(`${__dirname}/../anything.wav`);
+  const options = { 'name': 'sample-silent-2.wav' };
+  const uploadedFile = await ApidazeClient.mediaFiles.upload(filePath, options);
+  console.log('the uploaded media file', uploadedFile)
+
   // fetch the list of media files
-  const { body: mediaFiles } = await ApidazeClient.mediaFiles.list();
-  console.log('list of media files', mediaFiles);
+  const { body: mediaFiles, headers } = await ApidazeClient.mediaFiles.list({ maxItems: 2 });
+  console.log('the list of media files', mediaFiles, 'headers', headers);
   const firstMediaFile = mediaFiles[0];
 
   // get a media file
   const { body: mediaFile } = await ApidazeClient.mediaFiles.get(firstMediaFile);
-  console.log('the fetched media file', mediaFile);
+  console.log('the fetched media file buffer', mediaFile);
 
 
   // save the media file in the project root
@@ -31,4 +38,8 @@ const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
   // summarize a media file
   const mediaFileSummary = await ApidazeClient.mediaFiles.summarize(firstMediaFile)
   console.log('the media file summary', mediaFileSummary);
+
+  // delete a user
+  const deletedMediaFileResponse = await ApidazeClient.mediaFiles.delete(firstMediaFile);
+  console.log('the deleted media file', deletedMediaFileResponse);
 })();

@@ -42,10 +42,43 @@ test('has a hook trimming the response', t => {
     ...expectedResponse,
     isFromCache: false,
     retryCount: 0,
+    headers: {},
   };
   const modifiedResponse = responseTrimmer(rawResponse);
 
   t.is(hooks.afterResponse.length, 1);
   t.is(typeof responseTrimmer, 'function');
   t.deepEqual(modifiedResponse, expectedResponse);
+});
+
+test('exposes white-listed headers', t => {
+  const client = new Http(API_KEY, API_SECRET, API_URL);
+  const { hooks } = client.defaults.options;
+
+  const responseTrimmer = hooks.afterResponse.find(
+    hook => hook.name === 'responseTrimmer'
+  );
+  const expectedResponse = {
+    body: [{ id: 1800 }],
+    statusCode: 200,
+    headers: {
+      'list-truncation-token': 'a_token',
+    },
+  };
+
+  const rawResponse = {
+    ...expectedResponse,
+    isFromCache: false,
+    retryCount: 0,
+    headers: {
+      'list-truncation-token': 'a_token',
+      'non-white-listed-header': 'a_value',
+    },
+  };
+  const modifiedResponse = responseTrimmer(rawResponse);
+
+  t.is(hooks.afterResponse.length, 1);
+  t.is(typeof responseTrimmer, 'function');
+  t.deepEqual(modifiedResponse, expectedResponse);
+  t.falsy(modifiedResponse.headers['non-white-listed-header']);
 });

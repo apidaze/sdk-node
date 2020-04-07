@@ -39,7 +39,7 @@ test('exports a fuction', t => {
 
 test('fails without http client', t => {
   t.throws(() => new SipUsers(), {
-    message: "'http' must be provided.",
+    message: "'baseHttpClient' must be provided.",
   });
 });
 
