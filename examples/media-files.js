@@ -4,9 +4,8 @@ const { Apidaze } = require('../');
 
 const API_KEY = process.env.API_KEY;
 const API_SECRET = process.env.API_SECRET;
-const API_URL = 'https://cpaas-api.dev.voipinnovations.com';
 
-const ApidazeClient = new Apidaze(API_KEY, API_SECRET, API_URL);
+const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
 
 (async () => {
   // upload a media file
