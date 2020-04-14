@@ -8,3 +8,7 @@ test('has an export', t => {
 test('has a client called Apidaze', t => {
   t.truthy(index.Apidaze);
 });
+
+test('has a client called ScriptBuilder', t => {
+  t.truthy(index.ScriptBuilder);
+});
