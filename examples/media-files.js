@@ -9,20 +9,32 @@ const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
 
 (async () => {
   // upload a media file
-  const filePath = path.resolve(`${__dirname}/../anything.wav`);
+  const filePath = path.resolve(`${__dirname}/../test/fixtures/silent.wav`);
   const options = { 'name': 'sample-silent-2.wav' };
   const uploadedFile = await ApidazeClient.mediaFiles.upload(filePath, options);
   console.log('the uploaded media file', uploadedFile)
 
+  // fetch the list of all media files
+  const { body: allMediaFiles } = await ApidazeClient.mediaFiles.list();
+  console.log('the list of all media files', allMediaFiles);
+
   // fetch the list of media files
-  const { body: mediaFiles, headers } = await ApidazeClient.mediaFiles.list({ maxItems: 2 });
-  console.log('the list of media files', mediaFiles, 'headers', headers);
-  const firstMediaFile = mediaFiles[0];
+  const { body: firstTwoMediaFiles, headers } = await ApidazeClient.mediaFiles.list({ maxItems: 2 });
+  console.log('the first two of media files', firstTwoMediaFiles, 'headers', headers);
+  const firstMediaFile = firstTwoMediaFiles[0];
+
+  // fetch the list of media files
+  const secondTwoMediaFilesOptions = {
+    maxItems: 2,
+    lastToken: headers['list-truncation-token'],
+    details: true
+  }
+  const { body: secondTwoMediaFiles } = await ApidazeClient.mediaFiles.list(secondTwoMediaFilesOptions);
+  console.log('the second two of media files', secondTwoMediaFiles);
 
   // get a media file
   const { body: mediaFile } = await ApidazeClient.mediaFiles.get(firstMediaFile);
   console.log('the fetched media file buffer', mediaFile);
-
 
   // save the media file in the project root
   fs.writeFile(path.resolve(`${__dirname}/../${firstMediaFile}`), mediaFile, (err) => {
