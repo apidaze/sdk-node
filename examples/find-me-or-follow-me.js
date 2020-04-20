@@ -1,4 +1,5 @@
-const { ScriptBuilder, Dial } = require('../');
+const { ScriptBuilder, Dial, Hangup } = require('../');
+const serve = require('./server');
 
 const firstNumber = '12345678';
 const secondNumber = '22345678';
@@ -8,18 +9,22 @@ const getScriptContent = (firstNumber, secondNumber) => {
 
   const dialNode = new Dial({
     strategy: 'sequence',
-    targetType: 'number',
-    timeout: 12,
-    destination: firstNumber
+    timeout: 12
   });
 
-  dialNode.addCalleeNode({ destination: secondNumber, targetType: 'number' });
+  dialNode.addCalleeNode({ destination: firstNumber, targetType: 'number', attributes: { timeout: 6 } });
+  dialNode.addCalleeNode({ destination: secondNumber, targetType: 'number', attributes: { timeout: 6 } });
 
   builder.add(dialNode);
+
+  const hangupNode = new Hangup();
+  builder.add(hangupNode);
 
   return builder.toString();
 };
 
-const output = getScriptContent(firstNumber, secondNumber);
+const routes = {
+  '/': () => getScriptContent(firstNumber, secondNumber)
+};
 
-console.log(output);
+serve(routes);
