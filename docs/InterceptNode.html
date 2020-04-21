@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Applications - Documentation</title>
+    <title>InterceptNode - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Applications</h1>
+    <h1 class="page-title">InterceptNode</h1>
     
 
     
@@ -42,12 +42,10 @@
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Apidaze.html">Apidaze</a></span>
-        
-        Applications
+        InterceptNode
         </h2>
         
-            <div class="class-description"><p>Create a new applications client</p></div>
+            <div class="class-description"><p>Class representing an intercept node</p></div>
         
     
 </header>
@@ -62,7 +60,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="Applications"><span class="type-signature"></span>new Applications<span class="signature">(http)</span><span class="type-signature"> &rarr; {<a href="Applications.html">Applications</a>}</span></h4>
+    <h4 class="name" id="InterceptNode"><span class="type-signature"></span>new InterceptNode<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -101,7 +99,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest_Applications.js.html">rest/Applications.js</a>, <a href="rest_Applications.js.html#line9">line 9</a>
+        <a href="builder_nodes_Intercept.js.html">builder/nodes/Intercept.js</a>, <a href="builder_nodes_Intercept.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -120,56 +118,6 @@
 
 
 
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>http</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code><a href="global.html#Got">Got</a></code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>A got instance to manage HTTP requests</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -181,35 +129,23 @@
 
 
 
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code><a href="Applications.html">Applications</a></code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
 
 
 
 </div>
     
     </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="BaseNode.html">BaseNode</a></li>
+    </ul>
+
 
     
 
@@ -222,80 +158,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<div class="section-members">
-<h4 class="name" id="endpoint"><span class="type-signature"></span>endpoint<span class="type-signature"> :string</span></h4>
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest_Applications.js.html">rest/Applications.js</a>, <a href="rest_Applications.js.html#line19">line 19</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type"><code>string</code></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-</div>
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -306,14 +168,14 @@
 
     
 
-    <h4 class="name" id="getByApiKey"><span class="type-signature">(async) </span>getByApiKey<span class="signature">(apiKey)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
+    <h4 class="name" id="add"><span class="type-signature"></span>add<span class="signature">(node)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Fetch the list of sub-applications by the given API key</p>
+    <p>Add a node inherited from <a href="BaseNode.html"><code>BaseNode</code></a></p>
 </div>
 
 
@@ -328,6 +190,11 @@
 
     
 
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="BaseNode.html#add">BaseNode#add</a>
+    </li></ul></dd>
     
 
     
@@ -349,7 +216,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest_Applications.js.html">rest/Applications.js</a>, <a href="rest_Applications.js.html#line55">line 55</a>
+        <a href="builder_nodes_Base.js.html">builder/nodes/Base.js</a>, <a href="builder_nodes_Base.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -393,13 +260,13 @@
 
         <tr>
             
-                <td class="name"><code>apiKey</code></td>
+                <td class="name"><code>node</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><code>string</code></span>
+<span class="param-type"><code><a href="BaseNode.html">BaseNode</a></code></span>
 
 
             
@@ -410,7 +277,7 @@
             
 
             <td class="description last">
-                <p>The API key of applications to be fetched</p>
+                <p>The node to be added to the instance</p>
                 
             </td>
         </tr>
@@ -462,14 +329,14 @@
 
     
 
-    <h4 class="name" id="getById"><span class="type-signature">(async) </span>getById<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
+    <h4 class="name" id="getObject"><span class="type-signature"></span>getObject<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Fetch the list of sub-applications by the given application ID</p>
+    <p>Get object representation of the node</p>
 </div>
 
 
@@ -485,27 +352,9 @@
     
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest_Applications.js.html">rest/Applications.js</a>, <a href="rest_Applications.js.html#line77">line 77</a>
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="BaseNode.html#getObject">BaseNode#getObject</a>
     </li></ul></dd>
     
 
@@ -514,139 +363,6 @@
     
 
     
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>number</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>The ID of applications to be fetched</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Promise.&lt;<a href="global.html#Response">Response</a>></code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="getByName"><span class="type-signature">(async) </span>getByName<span class="signature">(name)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Fetch the list of sub-applications by the given application name</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
 
     
 
@@ -661,163 +377,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest_Applications.js.html">rest/Applications.js</a>, <a href="rest_Applications.js.html#line66">line 66</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><code>string</code></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">
-                <p>The name of applications to be fetched</p>
-                
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-returns">
-<h5>Returns:</h5>
-
-        
-
-<dl class="param-type">
-    <dt>
-        Type:
-    </dt>
-    <dd>
-        
-<span class="param-type"><code>Promise.&lt;<a href="global.html#Response">Response</a>></code></span>
-
-
-    </dd>
-</dl>
-
-
-    
-</div>
-
-
-
-</div>
-        
-            
-<div class="section-method">
-
-    
-
-    <h4 class="name" id="list"><span class="type-signature">(async) </span>list<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
-
-    
-
-
-
-<div class="description">
-    <p>Fetch the list of sub-applications</p>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest_Applications.js.html">rest/Applications.js</a>, <a href="rest_Applications.js.html#line27">line 27</a>
+        <a href="builder_nodes_Base.js.html">builder/nodes/Base.js</a>, <a href="builder_nodes_Base.js.html#line88">line 88</a>
     </li></ul></dd>
     
 
@@ -859,12 +419,18 @@
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise.&lt;<a href="global.html#Response">Response</a>></code></span>
+<span class="param-type"><code>Object</code></span>
 
 
     </dd>
 </dl>
 
+
+<div class="param-desc">
+    <ul>
+<li>The object representation of the node</li>
+</ul>
+</div>
 
     
 </div>
@@ -878,14 +444,14 @@
 
     
 
-    <h4 class="name" id="~getBy"><span class="type-signature">(async, inner) </span>getBy<span class="signature">(key, value)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#Response">Response</a>>}</span></h4>
+    <h4 class="name" id="hasChildren"><span class="type-signature"></span>hasChildren<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
 
     
 
 
 
 <div class="description">
-    <p>Fetch the list of sub-applications by the given <code>key</code> and <code>value</code></p>
+    <p>Check whether or not the content is an array</p>
 </div>
 
 
@@ -900,6 +466,11 @@
 
     
 
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="BaseNode.html#hasChildren">BaseNode#hasChildren</a>
+    </li></ul></dd>
     
 
     
@@ -921,7 +492,116 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="rest_Applications.js.html">rest/Applications.js</a>, <a href="rest_Applications.js.html#line40">line 40</a>
+        <a href="builder_nodes_Base.js.html">builder/nodes/Base.js</a>, <a href="builder_nodes_Base.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Boolean</code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="setAttribute"><span class="type-signature"></span>setAttribute<span class="signature">(key, value)</span><span class="type-signature"> &rarr; {<a href="BaseNode.html">BaseNode</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Set an attribute</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="BaseNode.html#setAttribute">BaseNode#setAttribute</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="builder_nodes_Base.js.html">builder/nodes/Base.js</a>, <a href="builder_nodes_Base.js.html#line58">line 58</a>
     </li></ul></dd>
     
 
@@ -982,7 +662,7 @@
             
 
             <td class="description last">
-                <p>The condition <code>key</code></p>
+                <p>The attribute name</p>
                 
             </td>
         </tr>
@@ -1008,7 +688,7 @@
             
 
             <td class="description last">
-                <p>The condition <code>value</code></p>
+                <p>The attribute value</p>
                 
             </td>
         </tr>
@@ -1041,7 +721,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><code>Promise.&lt;<a href="global.html#Response">Response</a>></code></span>
+<span class="param-type"><code><a href="BaseNode.html">BaseNode</a></code></span>
 
 
     </dd>
@@ -1052,6 +732,298 @@
 </div>
 
 
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="setAttributes"><span class="type-signature"></span>setAttributes<span class="signature">(attributes)</span><span class="type-signature"> &rarr; {<a href="BaseNode.html">BaseNode</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Set a set of attributes</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="BaseNode.html#setAttributes">BaseNode#setAttributes</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="builder_nodes_Base.js.html">builder/nodes/Base.js</a>, <a href="builder_nodes_Base.js.html#line72">line 72</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attributes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Object</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <p>An object of attributes</p>
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code><a href="BaseNode.html">BaseNode</a></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="toString"><span class="type-signature"></span>toString<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get the stringified XML content</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="BaseNode.html#toString">BaseNode#toString</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="builder_nodes_Base.js.html">builder/nodes/Base.js</a>, <a href="builder_nodes_Base.js.html#line125">line 125</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>string</code></span>
+
+
+    </dd>
+</dl>
+
+
+<div class="param-desc">
+    <ul>
+<li>Stringified XML content</li>
+</ul>
+</div>
+
+    
+</div>
+
+
+
+<div class="section-examples">
+<h5>Example</h5>
+
+    <pre class="prettyprint"><code>const scriptBuilder = new Apidaze.scriptBuilder();
+const answer = new AnswerNode();
+const output = scriptBuilder.add(answer).toString();
+
+// output returns;
+// &lt;document>
+//  &lt;work>
+//   &lt;answer>&lt;/answer>
+//  &lt;/work>
+// &lt;/document></code></pre>
+
+</div>
 
 </div>
         
