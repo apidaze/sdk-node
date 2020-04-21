@@ -1,3 +1,5 @@
+const path = require('path');
+const { readFileSync } = require('fs');
 const { Apidaze } = require('..');
 const serve = require('./server');
 
@@ -11,7 +13,9 @@ const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
 const sleep = async (ms) => new Promise((resolve => setTimeout(resolve, ms)));
 
 (async () => {
-  serve(`${__dirname}/dial-plans/echo.xml`);
+  const echoScriptPath = path.resolve(path.join(__dirname, './dial-plans/echo.xml'));
+  const echoScript = readFileSync(echoScriptPath, 'utf8');
+  serve({ '/': () => echoScript });
 
   const callerId = DID;
   const origin = MY_PHONE;

@@ -1,12 +1,30 @@
 const { createServer } = require('http');
-const { readFileSync } = require('fs');
-const { resolve } = require('path');
+const { URL } = require('url');
 
-const serve = (templatePath) => {
+const serve = (routes) => {
   const server = createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/xml'});
-    res.end(readFileSync(resolve(templatePath)));
-  })
+    const { method } = req;
+    const url = new URL(req.url, `http://${req.headers.host}`);
+    const { pathname, searchParams } = url;
+
+    console.log(`A ${method} request on ${pathname} with`, searchParams);
+
+    const callback = routes[pathname];
+    let responseBody;
+    
+    if (callback) {
+      res.writeHead(200, {'Content-Type': 'text/xml'});
+      const payload = Array.from(searchParams.entries())
+        .reduce((pv, [key, value]) => ({
+          ...pv,
+          [key]: value
+        }), {});
+
+      responseBody = callback(payload);
+    }
+
+    res.end(responseBody);
+  });
   
   server.listen(8080);
 
