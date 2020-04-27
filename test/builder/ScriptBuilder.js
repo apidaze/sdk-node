@@ -36,15 +36,15 @@ test('.add adds the given node in a default child', t => {
   const node = new Answer();
 
   t.false(Array.isArray(scriptBuilder.root));
-  t.is(scriptBuilder.root.work.length, 0);
+  t.is(scriptBuilder.root.work.length, 1);
 
   scriptBuilder.add(node);
-  t.is(scriptBuilder.root.work.length, 1);
+  t.is(scriptBuilder.root.work.length, 2);
 });
 
 test('.add ignores non-BaseNode inherited inputs', t => {
   const scriptBuilder = new ScriptBuilder();
   scriptBuilder.add({ child: 'content' });
 
-  t.is(scriptBuilder.root.work.length, 0);
+  t.is(scriptBuilder.root.work.length, 1);
 });

@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const { createServer } = require('http');
 const { URL } = require('url');
 
@@ -21,9 +23,19 @@ const serve = (routes) => {
         }), {});
 
       responseBody = callback(payload);
-    }
+      res.end(responseBody);
+    } else {
+      fs.readFile(path.resolve(`${__dirname}/assets/${req.url}`), (err, data) => {
+        if (err) {
+          res.writeHead(404);
+          res.end();
+          return;
+        }
 
-    res.end(responseBody);
+        res.writeHead(200);
+        res.end(data);
+      });
+    }
   });
   
   server.listen(8080);
