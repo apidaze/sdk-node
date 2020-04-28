@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>rest/Misc.js - Documentation</title>
+    <title>builder/nodes/Work.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">rest/Misc.js</h1>
+    <h1 class="page-title">builder/nodes/Work.js</h1>
     
 
     
@@ -39,33 +39,24 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @classdesc Create a new miscellaneous client
- * @constructs Misc
- * @memberof Apidaze
- * @param {Got} http - A got instance to manage HTTP requests
- *
- * @return {Misc}
+            <pre class="prettyprint source linenums"><code>const BaseNode = require('./Base');
+
+/**
+ * Class representing a work node
+ * @extends BaseNode
  */
-function Misc(http) {
-  if (!http) {
-    throw new Error("'http' must be provided.");
-  }
-
+class WorkNode extends BaseNode {
   /**
-   * Validates the given API key and API secret
-   * @async
-   * @alias Misc#validate
-   * @return {Promise&lt;Response>}
+   * @override
    */
-  this.validate = async () => {
-    return http.get('validates');
-  };
+  constructor(attributes = {}) {
+    super(null, attributes);
 
-  return this;
+    this.name = 'work';
+  }
 }
 
-module.exports = Misc;
+module.exports = WorkNode;
 </code></pre>
         </article>
     </section>
