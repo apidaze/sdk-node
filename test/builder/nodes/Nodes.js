@@ -1,8 +1,8 @@
 const test = require('ava');
 const { Base, ...nodes } = require('../../../lib/builder/nodes');
 
-test(`has 15 nodes inherited from BaseNode`, t => {
-  t.plan(15);
+test(`has 16 nodes inherited from BaseNode`, t => {
+  t.plan(16);
 
   for (const nodeName in nodes) {
     if (nodes.hasOwnProperty(nodeName)) {
@@ -14,7 +14,7 @@ test(`has 15 nodes inherited from BaseNode`, t => {
 });
 
 test('has lowercased names', t => {
-  t.plan(15);
+  t.plan(16);
 
   for (const nodeName in nodes) {
     if (nodes.hasOwnProperty(nodeName)) {
