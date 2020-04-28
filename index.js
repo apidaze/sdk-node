@@ -4,5 +4,5 @@ const { ScriptBuilder, ScriptNodes } = require('./lib/builder/ScriptBuilder');
 module.exports = {
   Apidaze,
   ScriptBuilder,
-  ...ScriptNodes
+  ScriptNodes
 };

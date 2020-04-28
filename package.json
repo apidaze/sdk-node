@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./lib ./test",
-    "test": "nyc ava",
+    "test": "ava",
+    "test:coverage": "nyc npm test",
     "test:watch": "npm test -- --watch",
-    "generate:docs": "jsdoc -c ./jsdoc.json -R README.md"
+    "docs:generate": "jsdoc -c ./jsdoc.json -R README.md"
   },
   "dependencies": {
     "form-data": "^3.0.0",
@@ -27,6 +28,10 @@
     "nyc": "^15.0.0",
     "prettier": "1.19.1"
   },
+  "files": [
+    "index.js",
+    "lib/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/apidaze/sdk-node.git"

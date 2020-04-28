@@ -22,6 +22,6 @@ jobs:
     - name: Run the static code analyzer with the code formatter
       run: npm run lint
     - name: Run the tests
-      run: npm test
+      run: npm run test:coverage
       env:
         CI: true
