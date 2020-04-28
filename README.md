@@ -2,7 +2,7 @@
 
 [![Node.js CI](https://github.com/apidaze/sdk-node/workflows/Node.js%20CI/badge.svg)](https://github.com/apidaze/sdk-node/actions?query=workflow%3A%22Node.js+CI%22)
 
-Apidaze Node.js SDK contains a client for Apidaze REST API as well as an XML script builder. The SDK allows you to leverage all Apidaze platform features such as making calls, sending text messages, serving IVR systems and many others in your application. The SDK also includes examples that demonstrate how to use the SDK.
+Apidaze Node.js SDK contains a client for Apidaze REST API as well as an XML script builder. The SDK allows you to leverage all Apidaze platform features such as making calls, sending text messages, serving IVR systems, and many others in your application. The SDK also includes examples that demonstrate how to use the SDK.
 
 ## Supported Node.js Versions
 
@@ -11,11 +11,9 @@ Apidaze Node.js SDK contains a client for Apidaze REST API as well as an XML scr
 
 ## Installation
 
-To install Apidaze Node.JS SDK as a dependency, type the following;
+To install Apidaze Node.JS SDK as a dependency from the current master branch, type the following;
 
 `npm install apidaze/sdk-node`
-
-This installs the Apidaze Node.js SDK from the current master branch.
 
 ## Quickstart
 
