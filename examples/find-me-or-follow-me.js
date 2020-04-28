@@ -1,5 +1,6 @@
-const { ScriptBuilder, Dial, Hangup } = require('../');
 const serve = require('./server');
+const { ScriptBuilder, ScriptNodes } = require('../');
+const { Dial, Hangup } = ScriptNodes;
 
 const firstNumber = '12345678';
 const secondNumber = '22345678';
