@@ -1,5 +1,5 @@
 const serve = require('./server');
-const { Apidaze, ScriptBuilder, ...ScriptNodes } = require('../');
+const { ScriptBuilder, ScriptNodes } = require('../');
 const {
   Record, Answer, Echo, Speak, Wait, Bind, BaseNode, Conference, Playback, Ringback
 } = ScriptNodes;
