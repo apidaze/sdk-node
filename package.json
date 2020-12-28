@@ -1,6 +1,6 @@
 {
   "name": "apidaze",
-  "version": "0.0.1",
+  "version": "0.0.101",
   "description": "Node bindings for the APIdaze API",
   "main": "index.js",
   "scripts": {
