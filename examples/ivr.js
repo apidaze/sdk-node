@@ -1,7 +1,15 @@
 const serve = require('./server');
 const { ScriptBuilder, ScriptNodes } = require('../');
 const {
-  Record, Answer, Echo, Speak, Wait, Bind, BaseNode, Conference, Playback, Ringback
+  Record,
+  Answer,
+  Echo,
+  Speak,
+  Wait,
+  Bind,
+  Conference,
+  Playback,
+  Ringback,
 } = ScriptNodes;
 
 const baseUrl = process.env.BASE_URL;
@@ -13,11 +21,13 @@ const getIntroScriptContent = () => {
   const answer = new Answer();
   const record = new Record({ name: 'example_recording' });
   const playback = new Playback(`${baseUrl}/intro.wav`);
-  const speak = new Speak('This example script will show you some things you can do with our API.');
+  const speak = new Speak(
+    'This example script will show you some things you can do with our API.'
+  );
   const instructionSpeech = new Speak(
     'Press 1 for an example of text to speech, press 2 to enter an echo line to check voice latency or press 3 to enter a conference.',
-    { 
-      inputTimeout: 10000
+    {
+      inputTimeout: 10000,
     }
   );
   const bind1 = new Bind('1', { action: `${baseUrl}/step-1.xml` });
@@ -27,7 +37,7 @@ const getIntroScriptContent = () => {
   instructionSpeech
     .add(bind1)
     .add(bind2)
-    .add(bind3)
+    .add(bind3);
 
   const script = builder
     .add(ringback)
@@ -47,12 +57,19 @@ const getIntroScriptContent = () => {
 const getStep1ScriptContent = () => {
   const builder = new ScriptBuilder();
 
-  const speech1 = new Speak(`Our text to speech leverages Google's cloud APIs to offer the best possible solution`);
-  const speech2 = new Speak('A wide variety of voices and languages are available. Here are just a few', { lang: 'en-AU', voice: 'male-a' });
+  const speech1 = new Speak(
+    `Our text to speech leverages Google's cloud APIs to offer the best possible solution`
+  );
+  const speech2 = new Speak(
+    'A wide variety of voices and languages are available. Here are just a few',
+    { lang: 'en-AU', voice: 'male-a' }
+  );
   const speech3 = new Speak('Je peux parler français', { lang: 'fr-FR' });
   const speech4 = new Speak('Auch deutsch', { lang: 'de-DE' });
   const speech5 = new Speak('そして日本人ですら', { lang: 'ja-JP' });
-  const speech6 = new Speak(`You can see our documentation for a full list of supported languages and voices for them.  We'll take you back to the menu for now.`);
+  const speech6 = new Speak(
+    `You can see our documentation for a full list of supported languages and voices for them.  We'll take you back to the menu for now.`
+  );
 
   const script = builder
     .add(speech1)
@@ -76,7 +93,7 @@ const getStep2ScriptContent = () => {
   const builder = new ScriptBuilder();
   const speech = new Speak('You will now be joined to an echo line.');
   const echo = new Echo(500);
-  
+
   const script = builder
     .add(speech)
     .add(echo)
@@ -87,9 +104,11 @@ const getStep2ScriptContent = () => {
 
 const getStep3ScriptContent = () => {
   const builder = new ScriptBuilder();
-  const speech = new Speak('You will be entered into a conference call now. You can initiate more calls to join participants or hangup to leave.');
+  const speech = new Speak(
+    'You will be entered into a conference call now. You can initiate more calls to join participants or hangup to leave.'
+  );
   const conference = new Conference('SDKTestConference');
-  
+
   const script = builder
     .add(speech)
     .add(conference)

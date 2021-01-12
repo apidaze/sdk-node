@@ -19,16 +19,22 @@ const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
 
   // save the file in the project root
   const fileContent = recordingResponse.body;
-  fs.writeFile(path.resolve(`${__dirname}/../${firstRecording}`), fileContent, (err) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
+  fs.writeFile(
+    path.resolve(`${__dirname}/../${firstRecording}`),
+    fileContent,
+    err => {
+      if (err) {
+        console.error(err);
+        return;
+      }
 
-    console.log('The file has been saved!');
-  });
+      console.log('The file has been saved!');
+    }
+  );
 
   // delete a recording
-  const deletedRecordingResponse = await ApidazeClient.recordings.delete(firstRecording);
+  const deletedRecordingResponse = await ApidazeClient.recordings.delete(
+    firstRecording
+  );
   console.log(deletedRecordingResponse);
 })();

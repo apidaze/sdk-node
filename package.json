@@ -4,7 +4,7 @@
   "description": "Node bindings for the APIdaze API",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./lib ./test",
+    "lint": "eslint ./lib ./test ./examples",
     "test": "ava",
     "test:coverage": "nyc npm test",
     "test:watch": "npm test -- --watch",
@@ -16,7 +16,7 @@
     "xml": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^3.1.0",
+    "ava": "^3.13.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",

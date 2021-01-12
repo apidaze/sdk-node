@@ -10,12 +10,14 @@ const MY_PHONE = process.env.MY_PHONE;
 
 const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
 
-const sleep = async (ms) => new Promise((resolve => setTimeout(resolve, ms)));
+const sleep = async ms => new Promise(resolve => setTimeout(resolve, ms));
 
 (async () => {
-  const echoScriptPath = path.resolve(path.join(__dirname, './dial-plans/echo.xml'));
+  const echoScriptPath = path.resolve(
+    path.join(__dirname, './dial-plans/echo.xml')
+  );
   const echoScript = readFileSync(echoScriptPath, 'utf8');
-  serve({ '/': () => echoScript });
+  const server = serve({ '/': () => echoScript });
 
   const callerId = DID;
   const origin = MY_PHONE;
@@ -23,11 +25,13 @@ const sleep = async (ms) => new Promise((resolve => setTimeout(resolve, ms)));
   const type = 'number';
 
   // place a call
-  const { body: { ok: callUuid }} = await ApidazeClient.calls.make({
+  const {
+    body: { ok: callUuid },
+  } = await ApidazeClient.calls.make({
     callerId,
     destination,
     origin,
-    type
+    type,
   });
   console.log('the placed call UUID', callUuid);
 
@@ -48,4 +52,6 @@ const sleep = async (ms) => new Promise((resolve => setTimeout(resolve, ms)));
   // terminate the active call
   const deletedResponse = await ApidazeClient.calls.delete(callUuid);
   console.log('termination response', deletedResponse);
+
+  server.close();
 })();

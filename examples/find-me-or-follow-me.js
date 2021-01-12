@@ -10,11 +10,19 @@ const getScriptContent = (firstNumber, secondNumber) => {
 
   const dialNode = new Dial({
     strategy: 'sequence',
-    timeout: 12
+    timeout: 12,
   });
 
-  dialNode.addCalleeNode({ destination: firstNumber, targetType: 'number', attributes: { timeout: 6 } });
-  dialNode.addCalleeNode({ destination: secondNumber, targetType: 'number', attributes: { timeout: 6 } });
+  dialNode.addCalleeNode({
+    destination: firstNumber,
+    targetType: 'number',
+    attributes: { timeout: 6 },
+  });
+  dialNode.addCalleeNode({
+    destination: secondNumber,
+    targetType: 'number',
+    attributes: { timeout: 6 },
+  });
 
   builder.add(dialNode);
 
@@ -25,7 +33,7 @@ const getScriptContent = (firstNumber, secondNumber) => {
 };
 
 const routes = {
-  '/': () => getScriptContent(firstNumber, secondNumber)
+  '/': () => getScriptContent(firstNumber, secondNumber),
 };
 
 serve(routes);
