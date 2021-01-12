@@ -16,7 +16,7 @@ test('fails without http client', t => {
 test('.make makes a call', async t => {
   const fixture = { ok: '2b89cb8c-a315-41d9-a3d3-3bf432c14610' };
   const scope = nock(/apidaze/)
-    .post(/calls/)
+    .post(/calls\?/)
     .reply(202, fixture);
 
   const client = new Calls(httpMock);
@@ -99,5 +99,37 @@ test('.delete terminates an active call with the given UUID', async t => {
 
   t.deepEqual(body, fixture);
   t.is(statusCode, 202);
+  t.true(scope.isDone());
+});
+
+test('.transfer transfers an active call with the given UUID', async t => {
+  const fixture = { ok: 'Call transferred' };
+  const scope = nock(/apidaze/)
+    .post(/calls\/2b89cb8c-a315-41d9-a3d3-3bf432c14610\/transfer/)
+    .reply(200, fixture);
+
+  const client = new Calls(httpMock);
+  const { body, statusCode } = await client.transfer(
+    '2b89cb8c-a315-41d9-a3d3-3bf432c14610'
+  );
+
+  t.deepEqual(body, fixture);
+  t.is(statusCode, 200);
+  t.true(scope.isDone());
+});
+
+test('.intercept intercepts an active call with the given UUID', async t => {
+  const fixture = { ok: '' };
+  const scope = nock(/apidaze/)
+    .post(/calls\/2b89cb8c-a315-41d9-a3d3-3bf432c14610\/intercept/)
+    .reply(200, fixture);
+
+  const client = new Calls(httpMock);
+  const { body, statusCode } = await client.intercept(
+    '2b89cb8c-a315-41d9-a3d3-3bf432c14610'
+  );
+
+  t.deepEqual(body, fixture);
+  t.is(statusCode, 200);
   t.true(scope.isDone());
 });

@@ -9,7 +9,7 @@ const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
   // create a CDR HTTP handler
   const createdCdrHandler = await ApidazeClient.cdrHandlers.create({
     url: 'http://example.com/handle',
-    name: 'A new CDR handler'
+    name: 'A new CDR handler',
   });
   console.log(createdCdrHandler);
 
@@ -19,9 +19,12 @@ const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
   const firstCdrHandler = cdrHandlers.body[0];
 
   // update a CDR HTTP handler
-  const updatedCdrHandler = await ApidazeClient.cdrHandlers.update(firstCdrHandler.id, {
-    url: 'http://example.com/handle_call',
-    name: 'The CDR handler'
-  });
+  const updatedCdrHandler = await ApidazeClient.cdrHandlers.update(
+    firstCdrHandler.id,
+    {
+      url: 'http://example.com/handle_call',
+      name: 'The CDR handler',
+    }
+  );
   console.log(updatedCdrHandler);
 })();
