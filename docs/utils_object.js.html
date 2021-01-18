@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>builder/nodes/Wait.js - Documentation</title>
+    <title>utils/object.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">builder/nodes/Wait.js</h1>
+    <h1 class="page-title">utils/object.js</h1>
     
 
     
@@ -39,24 +39,17 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const BaseNode = require('./Base');
-
-/**
- * Class representing a wait node
- * @extends BaseNode
- */
-class WaitNode extends BaseNode {
+            <pre class="prettyprint source linenums"><code>module.exports = {
   /**
-   * @override
+   * Shallow object merger function
+   *
+   * @param {Object} objectA - The first base object
+   * @param {Object} objectB - The second object to merge over the first
+   *
+   * @return {Object} An object with the merged properties from objectA and objectB
    */
-  constructor(content, attributes = {}) {
-    super(content, attributes);
-
-    this.name = 'wait';
-  }
-}
-
-module.exports = WaitNode;
+  merge: (objectA, objectB) => ({ ...objectA, ...objectB }),
+};
 </code></pre>
         </article>
     </section>
