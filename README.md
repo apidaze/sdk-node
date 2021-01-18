@@ -99,6 +99,19 @@ The code above will produce the following XML;
 </document>
 ```
 
+### Extending the HTTP agent
+
+The SDK is using [got](https://github.com/sindresorhus/got) for HTTP requests. To benefit from got's capabilities, one may use the following function signature;
+
+```javascript
+const options = {
+  requestOptions: {}
+};
+const client = new Apidaze('API_KEY', 'API_SECRET', options);
+```
+
+`options.requestOptions` represents the `options` that would be passed to `got` instance. So, for further information, got's [documentation](https://github.com/sindresorhus/got) may be checked.
+
 ## More examples
 
 Check out [examples](examples) in JavaScript for possible implementations and quick demonstrations. For the examples, one may benefit from [dotenv](npmjs.com/package/dotenv) to have a smoother experience in usage.
