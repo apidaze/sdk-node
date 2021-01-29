@@ -10,11 +10,16 @@ const ApidazeClient = new Apidaze(API_KEY, API_SECRET);
   const origin = '14125423968';
   const message = 'Hello world!';
 
+  const options = {
+    timeout: 1000,
+  };
+
   // send an SMS
   const messageResponse = await ApidazeClient.messages.send(
     origin,
     destination,
-    message
+    message,
+    options
   );
   console.log(messageResponse);
 })();
