@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "form-data": "^3.0.0",
-    "got": "^10.7.0",
+    "got": "^11.8.5",
     "xml": "^1.0.1"
   },
   "devDependencies": {
